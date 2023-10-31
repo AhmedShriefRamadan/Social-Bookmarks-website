@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load static %}
+
+{% block title %}Messages{% endblock %}
+
+{% block content %}
+    <h1>What do you want to message?</h1>
+    <div id="people-list">
+        {% for user in users %}
+            <div class="user">
+                <a href="{% url 'message' user.id %}">
+                    {% if user.profile.photo %}
+                        <img src="{% thumbnail user.profile.photo 80x80 %}" alt="Has no photo">
+                    {% else %}
+                        
+                        <img src="{% static 'images/user.png' %}">
+                    {% endif %}
+                </a>
+                <div class="info">
+                    <a href="{% url 'message' user.id %}" class="title">
+                        {{ user.username }}
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

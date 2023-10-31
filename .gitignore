@@ -1,0 +1,7 @@
+*.cert
+*.key
+db.sqlite3
+keys
+notes.txt
+test.py
+cert.crt

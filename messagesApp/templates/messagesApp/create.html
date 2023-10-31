@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user | capfirst }}{% endblock %}
+
+{% block content %}
+<h2>{{ user }}</h2>
+
+<div id="container_message">
+
+    <div id="messages">
+        {% if messages_all %}
+            {% for message in messages_all %}
+                {% if message in messages_from %}
+                <div class="message_body_from"><h3>{{ message.content }}</h3></div>
+                {% else %}
+                <div class="message_body_to"><h3>{{ message.content }}</h3></div>
+                <div class="clear"></div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div id="scroll-to-bottom-anchor"></div>
+    </div>
+<div class="clear"></div>
+
+    <form method="post" id="message">
+        <input type="text" name="message">
+        <input type="submit" value="Send">
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock %}
+
+{% block domready %}
+    window.onload = function() {
+        // Find the anchor element by its id
+        var anchor = document.getElementById("scroll-to-bottom-anchor");
+        
+        // Scroll to the anchor element
+        if (anchor) {
+            anchor.scrollIntoView({ behavior: "smooth" }); // This will smoothly scroll to the anchor
+        }
+    };
+{% endblock %}

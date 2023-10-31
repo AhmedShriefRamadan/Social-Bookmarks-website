@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load static %}
+
+{% block title %}People{% endblock %}
+
+{% block content %}
+    <h1>People</h1>
+    <div id="people-list">
+        {% for user in users %}
+            <div class="user">
+                <a href="{{ user.get_absolute_url }}">
+                    {% if user.profile.photo %}
+                        <img src="{% thumbnail user.profile.photo 80x80 %}" alt="Has no photo">
+                    {% else %}
+                        
+                        <img src="{% static 'images/user.png' %}">
+                    {% endif %}
+                </a>
+                <div class="info">
+                    <a href="{{ user.get_absolute_url }}" class="title">
+                        {{ user.username }}
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="custom-pagination">
+        {% include "pagination.html" with page=users %}
+    </div>
+
+{% endblock %}

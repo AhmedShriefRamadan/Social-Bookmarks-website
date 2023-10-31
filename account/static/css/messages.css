@@ -1,0 +1,45 @@
+.clear{
+    clear: both;
+}
+
+
+#container_message {
+    width: 80%;
+}
+
+#message {
+    text-align: center;
+    margin-top: 7%;
+}
+
+#message input:first-child{
+    width: 40%;
+}
+
+#messages {
+    float: left;
+    height: 50vh;
+    overflow-y: scroll;
+    width: 40%;
+}
+
+
+
+.message_body_from{
+    background-color: aqua;
+    margin-top: 5px;
+    margin-right: 5%;
+    padding: 4px;
+}
+
+.message_body_to{
+    background-color: blueviolet;
+    float: right;
+    top: 0;
+    color: aliceblue;
+    margin-top: 5px;
+    margin-right: 5%;
+    padding: 4px;
+    width: 90%;
+}
+
